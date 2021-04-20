@@ -1,0 +1,43 @@
+<div class="container" style="margin-top: 5px;">
+    <div class="row">
+        <div class="col">
+            <select name="" id="" [(ngModel)]="choice">
+                <option value="London">London</option>
+                <option value="New York">New Yourk</option>
+                <option value="Mumbai">Mumbai</option>
+                <option *ngFor="let city of savedCity" value="{{city}}">{{city}}</option>
+            </select>    
+            <div> <button (click)="searchFrom()">Search</button></div>
+        </div>
+    
+        <div class="row justify-content-end" style="margin-top: 5px;">
+            <div class="col-4-sm"> 
+                 <form #f="ngForm" (ngSubmit)="log(f)" class="justify-content-center">
+                <div class="row">
+                    <div class="col"><input type="text" ngModel name="fname" class="form-control-lg" [value]="name" placeholder="city" style="background-color: rgba(255,255,255,.2);"><span class=""></span></div>
+                    <div class="col"><button class="btn btn-primary" style="margin-top: 5px;">Search</button></div>
+                </div>
+                    </form>
+            </div>
+        </div>
+        
+    </div>
+    <hr>
+
+        <div  class="row" style="text-align: center; margin-left: 50%;">ForeCast</div>
+        <div class="row" style="margin-left:50%"><h3 style="color: rgb(102, 185, 185);">{{city}}</h3></div>
+    
+    <div class="row">
+        <div class="col"  *ngFor="let item of data">
+          <div class="card-" style="color:white; margin-top:2cm">
+            <img src="{{item.weather[0].icon}}" alt="">
+            <p>{{item.weather[0].icon}}</p>
+            <span>Temp:</span><h3>{{item.main.temp}}</h3>
+            <h4>{{item.weather[0].description}}</h4>
+            <span>Max</span><p>{{item.main.temp_max}}</p>
+            <p>{{item.dt_txt.slice(0,11)}}</p>
+          </div>
+        </div>
+    
+    
+</div> 

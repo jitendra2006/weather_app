@@ -1,0 +1,66 @@
+<div class="container" style="margin-top: 5px;">
+<div class="row">
+    <div class="col">
+        <select name="" id="" [(ngModel)]="choice" (onChange)="searchFrom()">
+            <option value="London">London</option>
+            <option value="New York">New Yourk</option>
+            <option value="Mumbai">Mumbai</option>
+            <option *ngFor="let city of savedCity" value="{{city}}">{{city}}</option>
+        </select>    
+        <div> <button (click)="searchFrom()">Search</button></div>
+    </div>
+
+    <div class="row justify-content-end" style="margin-top: 5px;">
+        <div class="col-4-sm"> 
+             <form #f="ngForm" (ngSubmit)="log(f)" class="justify-content-center">
+            <div class="row">
+                <div class="col"><input type="text" ngModel name="fname" class="form-control-lg" [value]="name" placeholder="city" style="background-color: rgba(255,255,255,.2);"><span class=""></span></div>
+                <div class="col"><button class="btn btn-primary" style="margin-top: 5px;">Search</button></div>
+            </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<!-- Location by default -->
+<div *ngIf="def">
+    
+    <p>Latitude: {{lat}}</p>
+    <p>Longitutde {{long}}</p>
+</div>
+<!-- 
+<div class="row" >
+    <div class="col">
+        <div class="row" >
+            <div class="col-6">
+                <div class="row text-info" style="font-size: 24px;">Saved Location</div>
+
+                    <div class="row" *ngFor="let city of savedCity">{{city}} <span><button (click)="deleteCity(city)" class="btn-sm" style="border-radius: 10px;box-sizing: border-box; width: 25px; height: 25px; " value="X">X</button></span> </div>
+            </div>
+        
+            <div class="col-6">
+                <div class="row"><a href="#" (click)="addCity()"><p style="font-size: 24px;" class="text-primary">Add Location</p></a></div>
+                <div class="row">
+                    <div *ngIf="add">
+                        <input type="text" #cityname>
+                        <button (click)="save(cityname)">Save city</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row justify-content-center" style="margin-top: 2cm;">
+            <div *ngIf="data" class="margin-top:5px">
+                <div class="row"><h4>Current Weather</h4></div>
+               <div class="row"><span><h3>{{data.location.name}},{{data.location.country}}</h3></span></div>
+               <div class=row>
+                    <div class="row"><img src="{{data.current.weather_icons[0]}}" alt=""></div>
+                    
+               </div>
+               <div class="row"><h4>{{data.current.weather_descriptions[0]}}</h4></div>
+               <div class="row">{{data.current.temperature}} <span>Cel</span></div>
+               <div class="row">{{data.location.localtime.slice(0,11)}}</div>
+            </div>
+    </div>
+</div>

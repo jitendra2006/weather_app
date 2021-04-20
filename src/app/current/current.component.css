@@ -1,0 +1,8 @@
+.panel{
+    border:3px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px red;
+    box-sizing: border-box;
+    width:60vw;
+    height: 80vh;
+}
